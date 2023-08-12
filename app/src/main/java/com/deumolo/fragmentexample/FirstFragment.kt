@@ -6,21 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/*private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"*/
-
 class FirstFragment : Fragment() {
-/*
-    private var param1: String? = null
-    private var param2: String? = null
-*/
+
+    private var name:String? = null
+    private var address:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-/*        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }*/
+        arguments?.let {
+            name = it.getString(NAME_BUNDLE)
+            address = it.getString(ADDRESS_BUNDLE)
+        }
     }
 
     override fun onCreateView(
@@ -31,14 +27,18 @@ class FirstFragment : Fragment() {
     }
 
     companion object {
+
+        private const val NAME_BUNDLE = "name_bundle"
+        private const val ADDRESS_BUNDLE = "address_bundle"
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             FirstFragment()
-/*                .apply {
+                .apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(NAME_BUNDLE, param1)
+                    putString(ADDRESS_BUNDLE, param2)
                 }
-            }*/
+            }
     }
 }

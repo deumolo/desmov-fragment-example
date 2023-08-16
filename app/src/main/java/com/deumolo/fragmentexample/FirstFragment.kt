@@ -26,18 +26,8 @@ class FirstFragment : Fragment() {
     private var editTextListener: EditTextListener? = null
     private var submitButtonListener: ButtonSubmitListener? = null
 
-
-    private var name:String? = null
-    private var address:String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            name = it.getString(NAME_BUNDLE)
-            address = it.getString(ADDRESS_BUNDLE)
-        }
-
-        Log.i("aris", name.orEmpty())
     }
 
     override fun onCreateView(
@@ -88,17 +78,11 @@ class FirstFragment : Fragment() {
     }
 
     companion object {
-
-        const val NAME_BUNDLE = "name_bundle"
-        const val ADDRESS_BUNDLE = "address_bundle"
-
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance() =
             FirstFragment()
                 .apply {
                 arguments = Bundle().apply {
-                    putString(NAME_BUNDLE, param1)
-                    putString(ADDRESS_BUNDLE, param2)
                 }
             }
     }

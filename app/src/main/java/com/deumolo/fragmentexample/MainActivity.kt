@@ -10,21 +10,21 @@ import android.widget.EditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import com.deumolo.fragmentexample.FirstFragment.Companion.ADDRESS_BUNDLE
-import com.deumolo.fragmentexample.FirstFragment.Companion.NAME_BUNDLE
+import com.deumolo.fragmentexample.SecondFragment.Companion.ADDRESS_BUNDLE
+import com.deumolo.fragmentexample.SecondFragment.Companion.NAME_BUNDLE
 
 class MainActivity : AppCompatActivity(), FirstFragment.EditTextListener, FirstFragment.ButtonSubmitListener {
 
-    private var current_text = ""
+    private var currentText = ""
 
     override fun onEditTextValueChanged(value: String) {
-        current_text = value
+        currentText = value
     }
 
     override fun onButtonSubmit(){
 
         val bundle = bundleOf(
-            NAME_BUNDLE to current_text,
+            NAME_BUNDLE to currentText,
             ADDRESS_BUNDLE to "Street 456"
         )
 
@@ -44,16 +44,12 @@ class MainActivity : AppCompatActivity(), FirstFragment.EditTextListener, FirstF
         setContentView(R.layout.activity_main)
 
         if(savedInstanceState == null) {
-            val bundle = bundleOf(
-                NAME_BUNDLE to "deumolo@gmail.com",
-                ADDRESS_BUNDLE to "Street 123"
-            )
-
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<FirstFragment>(R.id.FragmentContainer, args = bundle)
+                add<FirstFragment>(R.id.FragmentContainer)
             }
         }
+
     }
 
 }
